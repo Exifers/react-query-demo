@@ -1,27 +1,24 @@
 import React from 'react'
 import axios from 'axios'
 
-export const fetchPost = (postId) =>
-  axios.get(`/api/posts/${postId}`).then((res) => res.data)
-
-export default function usePost(postId) {
+export default function useEpisodes() {
   const [state, setState] = React.useReducer((_, action) => action, {
     isLoading: true,
   })
 
-  const fetch = React.useCallback(async () => {
+  const fetch = async () => {
     setState({ isLoading: true })
     try {
-      const data = await fetchPost(postId)
+      const data = await axios.get('/api/posts').then((res) => res.data)
       setState({ isSuccess: true, data })
     } catch (error) {
       setState({ isError: true, error })
     }
-  }, [postId])
+  }
 
   React.useEffect(() => {
     fetch()
-  }, [fetch])
+  }, [])
 
   return {
     ...state,

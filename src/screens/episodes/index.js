@@ -1,15 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 //
-import usePosts from '../../hooks/usePosts'
+import useEpisodes from '../../hooks/useEpisodes'
 import { PostStyles } from '../../components/styled'
 
 export default function Home() {
-  const postsQuery = usePosts()
+  const postsQuery = useEpisodes()
 
   return (
     <div>
-      <h1>Blog</h1>
+      <h1>Episodes</h1>
 
       <div
         css={`

@@ -1,34 +1,34 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import PostForm from '../../components/PostForm'
+import EpisodeForm from '../../components/EpisodeForm'
 import { Loader } from '../../components/styled'
 
-import usePosts from '../../hooks/usePosts'
-import useCreatePost from '../../hooks/useCreatePost'
+import useEpisodes from '../../hooks/useEpisodes'
+import useCreateEpisode from '../../hooks/useCreateEpisode'
 
-export default function Posts() {
-  const postsQuery = usePosts()
-  const [createPost, createPostInfo] = useCreatePost()
+export default function Episodes() {
+  const episodesQuery = useEpisodes()
+  const [createEpisode, createEpisodeInfo] = useCreateEpisode()
 
   const onSubmit = async (values) => {
-    await createPost(values)
-    postsQuery.fetch()
+    await createEpisode(values)
+    episodesQuery.fetch()
   }
 
   return (
     <section>
       <div>
         <div>
-          {postsQuery.isLoading ? (
+          {episodesQuery.isLoading ? (
             <span>
               <Loader /> Loading
             </span>
           ) : (
             <>
-              <h3>Posts</h3>
+              <h3>Episodes</h3>
               <ul>
-                {postsQuery.data.map((post) => (
+                {episodesQuery.data.map((post) => (
                   <li key={post.id}>
                     <Link to={`./${post.id}`}>{post.title}</Link>
                   </li>
@@ -41,19 +41,19 @@ export default function Posts() {
       </div>
       <hr />
       <div>
-        <h3>Create New Post</h3>
+        <h3>Create New Episode</h3>
         <div>
-          <PostForm
+          <EpisodeForm
             onSubmit={onSubmit}
             clearOnSubmit
             submitText={
-              createPostInfo.isLoading
+              createEpisodeInfo.isLoading
                 ? 'Saving...'
-                : createPostInfo.isError
+                : createEpisodeInfo.isError
                 ? 'Error!'
-                : createPostInfo.isSuccess
+                : createEpisodeInfo.isSuccess
                 ? 'Saved!'
-                : 'Create Post'
+                : 'Create Episode'
             }
           />
         </div>

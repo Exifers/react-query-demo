@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 
-export default function useSavePost() {
+export default function useSaveEpisode() {
   const [state, setState] = React.useReducer((_, action) => action, {
     isIdle: true,
   })
