@@ -3,7 +3,7 @@ import {useParams} from 'react-router-dom'
 
 import useEpisode from '../../hooks/useEpisode'
 
-export default function Episode() {
+export default function EpisodeDetailCard() {
     const {episodeId} = useParams()
     const episodeQuery = useEpisode(episodeId)
 

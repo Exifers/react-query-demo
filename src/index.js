@@ -8,7 +8,7 @@ import Sidebar from './components/Sidebar'
 import Admin from './screens/admin'
 import AdminEpisode from './screens/admin/Episode'
 import EpisodesList from './screens/episodes/EpisodesList'
-import Episode from './screens/episodes/Episode'
+import EpisodeDetailCard from './screens/episodes/EpisodeDetailCard'
 
 function SafeHydrate({ children }) {
   return (
@@ -37,7 +37,7 @@ export default function App() {
               <Route path="/admin" element={<Admin />} />
               <Route path="/admin/:episodeId" element={<AdminEpisode />} />
               <Route path="/episodes" element={<EpisodesList />} />
-              <Route path="/episodes/:episodeId" element={<Episode />} />
+              <Route path="/episodes/:episodeId" element={<EpisodeDetailCard />} />
             </Routes>
           </Main>
         </Wrapper>

@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 
-export default function useEpisodes(season) {
+export default function useEpisodes(season = 'all') {
   const [state, setState] = React.useReducer((_, action) => action, {
     isLoading: true,
   })

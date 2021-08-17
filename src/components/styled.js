@@ -1,6 +1,6 @@
 import React from 'react'
-import styled, { keyframes } from 'styled-components'
-import { ImSpinner2 } from 'react-icons/im'
+import styled, {keyframes} from 'styled-components'
+import {ImSpinner2} from 'react-icons/im'
 
 export const Wrapper = styled.div`
   display: flex;
@@ -28,6 +28,7 @@ export const EpisodeStyles = styled.div`
 
   :hover {
     text-decoration: none;
+
     h3 {
       text-decoration: underline;
     }
@@ -44,6 +45,7 @@ export const SeasonStyles = styled.div`
 
   :hover {
     text-decoration: none;
+
     h3 {
       text-decoration: underline;
     }
@@ -61,13 +63,25 @@ const rotate = keyframes`
 `
 
 export function Loader(props) {
-  return (
-    <ImSpinner2
-      {...props}
-      css={`
-        vertical-align: middle;
-        animation: ${rotate} 1s linear infinite;
-      `}
-    />
-  )
+    return (
+        <ImSpinner2
+            {...props}
+            css={`
+              vertical-align: middle;
+              animation: ${rotate} 1s linear infinite;
+            `}
+        />
+    )
 }
+
+export const HeaderStyles = styled.div`
+  display: flex;
+  align-items: center;
+
+  margin: 16px;
+  gap: 16px;
+  
+  & > h5 {
+    margin: 0;
+  }
+`
