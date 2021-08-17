@@ -23,6 +23,8 @@ export const EpisodeStyles = styled.div`
   border: solid 1px rgba(130, 130, 130, 0.3);
   padding: 1rem;
   color: inherit;
+  width: 185px;
+  margin: 16px;
 
   :hover {
     text-decoration: none;
