@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import useEpisodes from '../../hooks/useEpisodes'
 import {EpisodeStyles} from '../../components/styled'
 
-export default function Home() {
+export default function EpisodesList() {
     const episodesQuery = useEpisodes()
 
     return (
@@ -14,6 +14,7 @@ export default function Home() {
             <div
                 css={`
                   display: flex;
+                  flex-wrap: wrap;
                 `}
             >
                 {episodesQuery.isLoading ? (
@@ -23,7 +24,6 @@ export default function Home() {
                 ) : (
                     episodesQuery.data.map((episode) => (
                         <EpisodeStyles as={Link} to={`./${episode.id}`} key={episode.id}>
-                            <img src={episode.photoUrl} alt='poster' height='200px' css={`margin: auto; display: block;`}/>
                             <h3>{episode.title}</h3>
                             <p>{episode.body}</p>
                         </EpisodeStyles>

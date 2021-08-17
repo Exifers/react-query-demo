@@ -30,17 +30,6 @@ export default function EpisodeForm({
 
   return (
     <form onSubmit={handleSubmit}>
-        <label htmlFor="photoUrl">Photo Url</label>
-        <div>
-            <input
-                type="text"
-                name="photoUrl"
-                value={values.photoUrl}
-                onChange={(e) => setValue('photoUrl', e.target.value)}
-                required
-            />
-        </div>
-        <br />
       <label htmlFor="title">Title</label>
       <div>
         <input

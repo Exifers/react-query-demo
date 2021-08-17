@@ -28,7 +28,7 @@ export default function Episodes() {
             <>
               <h3>Episodes</h3>
               <ul>
-                {episodesQuery.data.map((episode) => (
+                {episodesQuery.data?.map((episode) => (
                   <li key={episode.id}>
                     <Link to={`./${episode.id}`}>{episode.title}</Link>
                   </li>
