@@ -18,7 +18,9 @@ function EpisodesHeader({season, onSeasonChange, value}) {
                 <option value="5">Season 5</option>
             </select>
 
-            {!episodesQuery.isLoading && (
+            {episodesQuery.isLoading ? (
+                <h5>Loading ...</h5>
+            ) : (
                 <h5>{episodesQuery.data?.length} episodes</h5>
             )}
         </HeaderStyles>
