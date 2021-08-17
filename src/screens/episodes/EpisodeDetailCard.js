@@ -18,7 +18,7 @@ export default function EpisodeDetailCard() {
                     <h2>{episodeQuery.data.title}</h2>
                     <small>Season {episodeQuery.data.season}</small>
                     <h3>Synopsis: </h3>
-                    <p>{episodeQuery.data.body}</p>
+                    <p>{episodeQuery.data.synopsis}</p>
                 </div>
             )}
         </>

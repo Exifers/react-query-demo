@@ -6,6 +6,6 @@ export function EpisodePreviewCard(props) {
     return <EpisodeStyles as={Link} to={`./${props.episode.id}`}>
         <h3>{props.episode.title}</h3>
         <small>season {props.episode.season}</small>
-        <p>{props.episode.body}</p>
+        <p>{props.episode.synopsis}</p>
     </EpisodeStyles>;
 }

@@ -42,7 +42,7 @@ async function PATCH(req, res) {
     body,
   } = req
 
-  if (body.body.includes('fail')) {
+  if (body.synopsis.includes('fail')) {
     res.status(500)
     res.json({ message: 'An unknown error occurred!' })
     return

@@ -28,7 +28,7 @@ async function GET(req, res) {
 
   const episodes = (await db.get()).episodes.map((d) => ({
     ...d,
-    body: d.body.substring(0, 50) + (d.body.length > 50 ? '...' : ''), // Don't return full body in list calls
+    synopsis: d.synopsis.substring(0, 50) + (d.synopsis.length > 50 ? '...' : ''), // Don't return full body in list calls
   })).filter(episode => episode.season.toString() === season || season === 'all')
 
   if (Number(pageSize)) {

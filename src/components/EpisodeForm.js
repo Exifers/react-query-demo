@@ -52,13 +52,13 @@ export default function EpisodeForm({
                 />
             </div>
             <br/>
-            <label htmlFor="body">body</label>
+            <label htmlFor="synopsis">Synopsis</label>
             <div>
         <textarea
             type="text"
-            name="body"
-            value={values.body}
-            onChange={(e) => setValue('body', e.target.value)}
+            name="synopsis"
+            value={values.synopsis}
+            onChange={(e) => setValue('synopsis', e.target.value)}
             required
             rows="10"
         />
