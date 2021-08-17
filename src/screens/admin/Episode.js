@@ -15,11 +15,11 @@ export default function Episode() {
   const navigate = useNavigate()
 
   const episodeQuery = useEpisode(episodeId)
-  const [savePost, saveEpisodeInfo] = useSaveEpisode()
+  const [saveEpisode, saveEpisodeInfo] = useSaveEpisode()
   const [deleteEpisode, deleteEpisodeInfo] = useDeleteEpisode()
 
   const onSubmit = async (values) => {
-    await savePost(values)
+    await saveEpisode(values)
     episodeQuery.fetch()
   }
 

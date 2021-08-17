@@ -23,10 +23,10 @@ export default async (req, res) => {
 
 async function GET(req, res) {
   const {
-    query: { postId },
+    query: { episodeId },
   } = req
 
-  const row = (await db.get()).posts.find((d) => d.id == postId)
+  const row = (await db.get()).episodes.find((d) => d.id == episodeId)
 
   if (!row) {
     res.status(404)
@@ -38,7 +38,7 @@ async function GET(req, res) {
 
 async function PATCH(req, res) {
   const {
-    query: { postId },
+    query: { episodeId },
     body,
   } = req
 
@@ -48,7 +48,7 @@ async function PATCH(req, res) {
     return
   }
 
-  const row = (await db.get()).posts.find((d) => d.id == postId)
+  const row = (await db.get()).episodes.find((d) => d.id == episodeId)
 
   if (!row) {
     res.status(404)
@@ -65,7 +65,7 @@ async function PATCH(req, res) {
   await db.set((old) => {
     return {
       ...old,
-      posts: old.posts.map((d) => (d.id == postId ? newRow : d)),
+      episodes: old.episodes.map((d) => (d.id == episodeId ? newRow : d)),
     }
   })
 
@@ -74,7 +74,7 @@ async function PATCH(req, res) {
 
 async function DELETE(req, res) {
   const {
-    query: { postId },
+    query: { episodeId },
   } = req
 
   if (Math.random() < deleteFailureRate) {
@@ -83,7 +83,7 @@ async function DELETE(req, res) {
     return
   }
 
-  const row = (await db.get()).posts.find((d) => d.id == postId)
+  const row = (await db.get()).episodes.find((d) => d.id == episodeId)
 
   if (!row) {
     res.status(404)
@@ -93,7 +93,7 @@ async function DELETE(req, res) {
   await db.set((old) => {
     return {
       ...old,
-      posts: old.posts.filter((d) => d.id != postId),
+      episodes: old.episodes.filter((d) => d.id != episodeId),
     }
   })
 

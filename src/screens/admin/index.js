@@ -28,9 +28,9 @@ export default function Episodes() {
             <>
               <h3>Episodes</h3>
               <ul>
-                {episodesQuery.data.map((post) => (
-                  <li key={post.id}>
-                    <Link to={`./${post.id}`}>{post.title}</Link>
+                {episodesQuery.data.map((episode) => (
+                  <li key={episode.id}>
+                    <Link to={`./${episode.id}`}>{episode.title}</Link>
                   </li>
                 ))}
               </ul>

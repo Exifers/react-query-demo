@@ -9,7 +9,7 @@ export default function useEpisodes() {
   const fetch = async () => {
     setState({ isLoading: true })
     try {
-      const data = await axios.get('/api/posts').then((res) => res.data)
+      const data = await axios.get('/api/episodes').then((res) => res.data)
       setState({ isSuccess: true, data })
     } catch (error) {
       setState({ isError: true, error })

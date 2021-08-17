@@ -2,10 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 //
 import useEpisodes from '../../hooks/useEpisodes'
-import { PostStyles } from '../../components/styled'
+import { EpisodeStyles } from '../../components/styled'
 
 export default function Home() {
-  const postsQuery = useEpisodes()
+  const episodesQuery = useEpisodes()
 
   return (
     <div>
@@ -18,16 +18,16 @@ export default function Home() {
           grid-gap: 1rem;
         `}
       >
-        {postsQuery.isLoading ? (
+        {episodesQuery.isLoading ? (
           <span>Loading...</span>
-        ) : postsQuery.isError ? (
-          postsQuery.error.message
+        ) : episodesQuery.isError ? (
+          episodesQuery.error.message
         ) : (
-          postsQuery.data.map((post) => (
-            <PostStyles as={Link} to={`./${post.id}`} key={post.id}>
-              <h3>{post.title}</h3>
-              <p>{post.body}</p>
-            </PostStyles>
+          episodesQuery.data.map((episode) => (
+            <EpisodeStyles as={Link} to={`./${episode.id}`} key={episode.id}>
+              <h3>{episode.title}</h3>
+              <p>{episode.body}</p>
+            </EpisodeStyles>
           ))
         )}
       </div>

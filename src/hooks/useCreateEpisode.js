@@ -9,7 +9,7 @@ export default function useCreateEpisode() {
   const mutate = React.useCallback(async (values) => {
     setState({ isLoading: true })
     try {
-      const data = axios.post('/api/posts', values).then((res) => res.data)
+      const data = axios.post('/api/episodes', values).then((res) => res.data)
       setState({ isSuccess: true, data })
     } catch (error) {
       setState({ isError: true, error })

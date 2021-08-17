@@ -26,7 +26,7 @@ async function GET(req, res) {
     query: { pageOffset, pageSize },
   } = req
 
-  const posts = (await db.get()).posts.map((d) => ({
+  const episodes = (await db.get()).episodes.map((d) => ({
     ...d,
     body: d.body.substring(0, 50) + (d.body.length > 50 ? '...' : ''), // Don't return full body in list calls
   }))
@@ -34,15 +34,15 @@ async function GET(req, res) {
   if (Number(pageSize)) {
     const start = Number(pageSize) * Number(pageOffset)
     const end = start + Number(pageSize)
-    const page = posts.slice(start, end)
+    const page = episodes.slice(start, end)
 
     return res.json({
       items: page,
-      nextPageOffset: posts.length > end ? Number(pageOffset) + 1 : undefined,
+      nextPageOffset: episodes.length > end ? Number(pageOffset) + 1 : undefined,
     })
   }
 
-  res.json(posts)
+  res.json(episodes)
 }
 
 async function POST(req, res) {
@@ -60,7 +60,7 @@ async function POST(req, res) {
   await db.set((old) => {
     return {
       ...old,
-      posts: [...old.posts, row],
+      episodes: [...old.episodes, row],
     }
   })
 
