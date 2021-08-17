@@ -16,6 +16,7 @@ export default function Episode() {
             ) : (
                 <div>
                     <h2>{episodeQuery.data.title}</h2>
+                    <small>Season {episodeQuery.data.season}</small>
                     <h3>Synopsis: </h3>
                     <p>{episodeQuery.data.body}</p>
                 </div>

@@ -25,6 +25,7 @@ export default function EpisodesList() {
                     episodesQuery.data.map((episode) => (
                         <EpisodeStyles as={Link} to={`./${episode.id}`} key={episode.id}>
                             <h3>{episode.title}</h3>
+                            <small>season {episode.season}</small>
                             <p>{episode.body}</p>
                         </EpisodeStyles>
                     ))
