@@ -29,7 +29,7 @@ async function GET(req, res) {
   const episodes = (await db.get()).episodes.map((d) => ({
     ...d,
     synopsis: d.synopsis.substring(0, 50) + (d.synopsis.length > 50 ? '...' : ''), // Don't return full body in list calls
-  })).filter(episode => episode.season.toString() === season || season === 'all')
+  })).filter(episode => episode.season?.toString() === season || season === 'all')
 
   if (Number(pageSize) && pageOffset !== undefined) {
     const start = Number(pageSize) * Number(pageOffset)
@@ -46,12 +46,6 @@ async function GET(req, res) {
 }
 
 async function POST(req, res) {
-  if (Math.random() < failureRate) {
-    res.status(500)
-    res.json({ message: 'An unknown error occurred!' })
-    return
-  }
-
   const row = {
     id: shortid.generate(),
     ...req.body,
