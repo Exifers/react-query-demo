@@ -10,6 +10,8 @@ import AdminEpisode from './screens/admin/AdminEpisode'
 import EpisodesList from './screens/episodes/EpisodesList'
 import EpisodeDetailCard from './screens/episodes/EpisodeDetailCard'
 import {QueryClientProvider, QueryClient} from "react-query";
+import {ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -51,6 +53,7 @@ export default function App() {
                             </Routes>
                         </Main>
                     </Wrapper>
+                    <ToastContainer/>
                 </BrowserRouter>
             </QueryClientProvider>
         </SafeHydrate>
