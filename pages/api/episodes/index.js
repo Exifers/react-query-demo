@@ -43,6 +43,12 @@ async function GET(req, res) {
 }
 
 async function POST(req, res) {
+  if (req.body.synopsis === 'fail') {
+    res.status(500)
+    res.json({ message: 'An error has occurred! '})
+    return
+  }
+
   const row = {
     id: shortid.generate(),
     ...req.body,
