@@ -23,7 +23,7 @@ export default async (req, res) => {
 
 async function GET(req, res) {
   const {
-    query: { pageOffset, pageSize, season = 'all' },
+    query: { pageOffset, pageSize = 8, season = 'all' },
   } = req
 
   const episodes = (await db.get()).episodes.map((d) => ({
@@ -31,7 +31,7 @@ async function GET(req, res) {
     synopsis: d.synopsis.substring(0, 50) + (d.synopsis.length > 50 ? '...' : ''), // Don't return full body in list calls
   })).filter(episode => episode.season.toString() === season || season === 'all')
 
-  if (Number(pageSize)) {
+  if (Number(pageSize) && pageOffset !== undefined) {
     const start = Number(pageSize) * Number(pageOffset)
     const end = start + Number(pageSize)
     const page = episodes.slice(start, end)
