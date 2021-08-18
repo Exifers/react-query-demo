@@ -2,7 +2,7 @@ import React from 'react'
 
 const defaultFormValues = {
     title: '',
-    body: '',
+    synopsis: '',
 }
 
 export default function EpisodeForm({
