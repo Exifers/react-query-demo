@@ -10,7 +10,7 @@ import useDeleteEpisode from '../../hooks/useDeleteEpisode'
 import EpisodeForm from '../../components/EpisodeForm'
 import { Loader } from '../../components/styled'
 
-export default function Episode() {
+export default function AdminEpisode() {
   const { episodeId } = useParams()
   const navigate = useNavigate()
 
