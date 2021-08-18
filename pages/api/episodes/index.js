@@ -23,7 +23,7 @@ export default async (req, res) => {
 
 async function GET(req, res) {
   const {
-    query: { pageOffset, pageSize, season },
+    query: { pageOffset, pageSize, season = 'all' },
   } = req
 
   const episodes = (await db.get()).episodes.map((d) => ({

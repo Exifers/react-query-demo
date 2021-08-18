@@ -1,21 +1,15 @@
-import React, {useState} from 'react'
+import React from 'react'
 //
 import useEpisodes from '../../hooks/useEpisodes'
-import {EpisodePreviewCard} from "./EpisodePreviewCard";
+import {EpisodePreviewCard, EpisodePreviewLoaderCard} from "./EpisodePreviewCard";
 import EpisodesHeader from "./EpisodesHeader";
 
 export default function EpisodesList() {
-    const [season, setSeason] = useState('all')
-
-    const episodesQuery = useEpisodes(season)
-
-    const handleSeasonChange = (event) => {
-        setSeason(event.target.value)
-    }
+    const episodesQuery = useEpisodes()
 
     return (
         <div>
-            <EpisodesHeader season={season} onSeasonChange={handleSeasonChange} value={season}/>
+            <EpisodesHeader/>
             <div
                 css={`
                   display: flex;
@@ -23,7 +17,7 @@ export default function EpisodesList() {
                 `}
             >
                 {episodesQuery.isLoading ? (
-                    <span>Loading...</span>
+                    <EpisodePreviewLoaderCard/>
                 ) : episodesQuery.isError ? (
                     episodesQuery.error.message
                 ) : (
