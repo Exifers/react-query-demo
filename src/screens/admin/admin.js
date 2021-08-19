@@ -9,11 +9,10 @@ import useCreateEpisode from '../../hooks/useCreateEpisode'
 
 export default function Episodes() {
   const episodesQuery = useEpisodes()
-  const [createEpisode, createEpisodeInfo] = useCreateEpisode()
+  const {mutate: createEpisode, ...createEpisodeInfo} = useCreateEpisode()
 
   const onSubmit = async (values) => {
     await createEpisode(values)
-    episodesQuery.fetch()
   }
 
   return (

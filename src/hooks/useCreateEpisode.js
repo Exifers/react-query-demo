@@ -1,20 +1,29 @@
 import React from 'react'
 import axios from 'axios'
+import {useMutation, useQueryClient} from "react-query";
+import {toast} from "react-toastify";
 
 export default function useCreateEpisode() {
-  const [state, setState] = React.useReducer((_, action) => action, {
-    isIdle: true,
-  })
+    const queryClient = useQueryClient()
+    return useMutation((values) => (
+        axios.post('/api/episodes', values).then((res) => res.data)
+    ), {
+        onMutate: (variables) => {
+            const previousCacheData = queryClient.getQueryData('episodes')
 
-  const mutate = React.useCallback(async (values) => {
-    setState({ isLoading: true })
-    try {
-      const data = await axios.post('/api/episodes', values).then((res) => res.data)
-      setState({ isSuccess: true, data })
-    } catch (error) {
-      setState({ isError: true, error })
-    }
-  }, [])
+            queryClient.setQueryData('episodes', episodes => {
+                return [
+                    ...episodes,
+                    variables,
+                ]
+            })
 
-  return [mutate, state]
+            return previousCacheData
+        },
+        onError: (error, variables, context) => {
+            const previousCacheData = context
+            toast.error('An error has occurred!')
+            queryClient.setQueryData('episodes', previousCacheData)
+        }
+    })
 }

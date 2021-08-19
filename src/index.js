@@ -12,6 +12,7 @@ import EpisodeDetailCard from './screens/episodes/EpisodeDetailCard'
 import {QueryClientProvider, QueryClient} from "react-query";
 import {ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import {ReactQueryDevtools} from "react-query/devtools";
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -33,6 +34,7 @@ export default function App() {
     return (
         <SafeHydrate>
             <QueryClientProvider client={queryClient}>
+                <ReactQueryDevtools/>
                 <BrowserRouter>
                     <Wrapper>
                         <Sidebar/>
